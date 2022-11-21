@@ -8,21 +8,14 @@
 using namespace std;
 
 string itc_cmp_str(string str1, string str2, int num) {
-  long long len = itc_len(str1);
-  string new_str;
-  if (num > len)
-    return str1;
-  if (num == len)
-    return str1 + str2;
-  for (long long i = 0; i < len; i++) {
-    if (i != num)
-      new_str += str1[i];
-    else {
-      new_str += str2;
-      new_str += str1[i];
-    }
-  }
-  return new_str;
+  string str, str_;
+  long long len1 = itc_len(str1), len2 = itc_len(str2);
+  if ((len1 < num) || (num < 0)) return str1;
+  for (int i = 0; i < num; i++) str += str1[i];
+  for (int i = 0; i < len2; i++) str += str2[i];
+  for (int i = num; str1[i] != '\0'; i++) str += str1[i];
+  for (int i = 0; i < len1; i++) str_ += str[i];
+  return str_;
 }
 
 int itc_find_str(string str1, string str2) {
