@@ -8,7 +8,8 @@ using namespace std;
 
 string itc_even_place(string str) {
   string new_str = "";
-  for (long long i = 1; i <= itc_len(str); ++i) {
+  if (itc_len(str) < 2) return "-1";
+  for (long long i = 1; str[i] != '\0'; ++i) {
     if (i % 2 == 1)
       new_str += str[i];
   }
@@ -24,7 +25,7 @@ double itc_percent_lower_uppercase(string str) {
     if (str[i] >= 'a' && str[i] <= 'z')
       lower++;
   }
-  return lower / upper * 100;
+  return upper / lower * 100;
 }
 
 string itc_reverse_str(string str) {
